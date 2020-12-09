@@ -22,8 +22,12 @@
 # print([str(i.message) for i in r.iter_commits()]) # 查看提交的hash值
 
 import os
+from functools import reduce
+
 from git.repo import Repo
 from git.repo.fun import is_git_dir
+import git
+import time
 
 
 class GitRepository(object):
@@ -53,13 +57,6 @@ class GitRepository(object):
         else:
             self.repo = Repo(self.local_path)
 
-    def pull(self):
-        """
-        从线上拉最新代码
-        :return:
-        """
-        self.repo.git.pull()
-
     def branches(self):
         """
         获取所有分支
@@ -79,42 +76,19 @@ class GitRepository(object):
         log_list = commit_log.split("\n")
         return [eval(item) for item in log_list]
 
-    def tags(self):
-        """
-        获取所有tag
-        :return:
-        """
-        return [tag.name for tag in self.repo.tags]
-
-    def change_to_branch(self, branch):
-        """
-        切换分值
-        :param branch:
-        :return:
-        """
-        self.repo.git.checkout(branch)
-
-    def change_to_commit(self, branch, commit):
-        """
-        切换commit
-        :param branch:
-        :param commit:
-        :return:
-        """
-        self.change_to_branch(branch=branch)
-        self.repo.git.reset('--hard', commit)
-
-    def change_to_tag(self, tag):
-        """
-        切换tag
-        :param tag:
-        :return:
-        """
-        self.repo.git.checkout(tag)
-
 
 if __name__ == '__main__':
     local_path = os.path.join('codes', 'luffycity')
     repo = GitRepository(local_path, 'https://github.com/ddycy/Gusion-.git')
-    repo.commits()
+    repo_directory_address = 'D:\\githubTest\\Gusion-'
+    while True:
+        revision = repo.commits()[0]['commit']
+        repository = git.Repo(repo_directory_address)
+        commit = repository.commit(rev=revision)
+        # Git ignore white space at the end of line, empty lines,
+        # renamed files and also copied files
+        diff_index = commit.diff(revision+'~1', create_patch=True, ignore_blank_lines=False,
+                            ignore_space_at_eol=False, diff_filter='cr')
+        print(reduce(lambda x, y: str(x)+str(y), diff_index))
+        time.sleep(60)
 
