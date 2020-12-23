@@ -25,12 +25,6 @@ class ApiAuthController extends Controller{
         * @return test
        */
       class c(){}
-      /**
-        * d
-        *
-        * @return test
-       */
-      class d(){}
 
 
 }
