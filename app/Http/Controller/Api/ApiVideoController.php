@@ -39,6 +39,10 @@ class ApiVideoController extends Controller{
         ];
 
         print("test");
+        print("test");
+        print("test");
+        print("test");
+        print("test");
 
         $this->apiParamVerify($rules);
 
