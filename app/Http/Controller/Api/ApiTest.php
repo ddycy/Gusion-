@@ -8,5 +8,6 @@
 */
 class ApiAuthController extends Controller{
 
+      class a(){}
 
 }
