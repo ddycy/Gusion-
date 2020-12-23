@@ -38,6 +38,12 @@ class ApiVideoController extends Controller{
             'car_id' => 'required',
         ];
 
+        print("test");
+        print("test");
+        print("test");
+        print("test");
+        print("test");
+
         $this->apiParamVerify($rules);
 
         $ret =(new Video())->play_video($this->params);
