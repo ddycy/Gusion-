@@ -56,11 +56,11 @@ class ApiAuthController extends Controller{
        */
       class h(){}
         /**
-        * hhh
+        * hhhh
         *
         * @return test
        */
-      class hhh(){}
+      class hhhh(){}
 
 
 
