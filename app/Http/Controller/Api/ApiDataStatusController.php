@@ -83,6 +83,8 @@ class ApiDataStatusController extends Controller
     public function getProjectStatusStat()
     {
         $count = isset($this->params['count']) ? $this->params['count'] : 8;
+        $count1 = isset($this->params['count']) ? $this->params['count'] : 8;
+        $count2 = isset($this->params['count']) ? $this->params['count'] : 8;
         $page = isset($this->params['page']) ? $this->params['page'] : 1;
         $sort = isset($this->params['sort']) ? $this->params['sort'] : "asc";
 
