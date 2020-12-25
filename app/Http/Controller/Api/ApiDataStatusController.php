@@ -22,6 +22,7 @@ class ApiDataStatusController extends Controller
 {
     use TraitDeptDetailUtils;
     protected $dbConn = null;
+    protected $dbConn1 = null;
     protected $Headers = array(
         [
             'field' => 'project_name',
